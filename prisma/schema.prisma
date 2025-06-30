@@ -1,0 +1,34 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Category {
+    category_id              Int        @id @default(autoincrement())
+    category_name            String     @db.VarChar(255)
+    tasks                    Task[]     @relation("TaskCategory")
+}
+
+model User {
+    user_id                 Int         @id @default(autoincrement())
+    username                String      @unique @db.VarChar(255)
+    password                String      @db.VarChar(255)
+    createdTasks            Task[]      @relation("CreatedBy")
+    completedTasks          Task[]      @relation("CompletedBy")
+}
+
+model Task {
+    task_id                 Int         @id @default(autoincrement())
+    desc                    String      @db.VarChar(500)
+    categoryId              Int
+    category                Category    @relation(fields: [categoryId], references: [category_id], onDelete: Cascade, name: "TaskCategory")
+    completed               Boolean     @default(false)
+    createdByUserId         Int
+    createdBy               User        @relation(fields: [createdByUserId], references: [user_id], onDelete: Cascade, name: "CreatedBy")
+    completedByUserId       Int?
+    completedBy             User?       @relation(fields: [completedByUserId], references: [user_id], onDelete: SetNull, name: "CompletedBy")
+}

@@ -10,5 +10,10 @@ The backend is built with Fastify and a MySQL database. Bcrypt is used for hashi
 ## Usage
 
 -   Install packages with `npm install`
--   Set up a database on your local machine, then run `node install.js` to create tables
+-   Set up a database on your local machine and add variables to .env-file according to structure in .env.sample
+-   Run `node install.js` to create the tables tables
 -   Fire up the application by running `npm run start`
+
+## Further development
+
+This backend has base functionality for task management that could be used for any project, really. However, since I'm using this for solo work, I didn't spend much time adding functionality for updating users etc. User functionality could easily be further developed if needed.
