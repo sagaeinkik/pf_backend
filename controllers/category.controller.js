@@ -62,36 +62,6 @@ module.exports.getCatById = async (request, reply) => {
     }
 };
 
-// Find category by name
-module.exports.getCatByName = async (request, reply) => {
-    error = errs.resetErrors();
-    const { category_name } = request.params;
-
-    try {
-        const category = await prisma.category.findUnique({
-            where: {
-                category_name,
-            },
-            include: {
-                _count: {
-                    select: {
-                        tasks: true,
-                    },
-                },
-            },
-        });
-
-        if (!category) {
-            error = errs.createError('Not Found', 404, 'No category found.');
-            return reply.code(error.https_response.code).send(error);
-        }
-
-        return reply.send(category);
-    } catch (error) {
-        return reply.code(500).send(error);
-    }
-};
-
 // Create category
 module.exports.createCat = async (request, reply) => {
     error = errs.resetErrors();

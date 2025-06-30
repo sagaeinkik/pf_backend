@@ -31,6 +31,7 @@ fastify.get('/', async (request, reply) => {
 
 fastify.register(require('./routes/user.routes'));
 fastify.register(require('./routes/category.routes'));
+fastify.register(require('./routes/task.routes'));
 
 // App settings
 let port = process.env.PORT || 3000;

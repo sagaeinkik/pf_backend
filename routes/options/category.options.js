@@ -50,28 +50,6 @@ module.exports.getCatByIdOpts = {
     handler: categoryController.getCatById,
 };
 
-// Category by name
-module.exports.getCatByNameOpts = {
-    schema: {
-        response: {
-            200: {
-                type: 'object',
-                properties: {
-                    category_id: { type: 'number' },
-                    category_name: { type: 'string' },
-                    _count: {
-                        type: 'object',
-                        properties: {
-                            tasks: { type: 'number' },
-                        },
-                    },
-                },
-            },
-        },
-    },
-    handler: categoryController.getCatByName,
-};
-
 // Add category
 module.exports.createCatOpts = {
     schema: {
