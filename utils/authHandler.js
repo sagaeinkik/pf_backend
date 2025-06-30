@@ -5,7 +5,7 @@ require('dotenv').config();
 const jwt = require('jsonwebtoken');
 const jwtKey = process.env.JWT_SECRET_KEY;
 const bcrypt = require('bcrypt');
-const errorMessage = require('./errorMessage');
+const errorMessage = require('./errorHandler');
 
 // Create a jwt
 module.exports.createJWT = (username) => {
