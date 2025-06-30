@@ -9,7 +9,7 @@ datasource db {
 
 model Category {
     category_id              Int        @id @default(autoincrement())
-    category_name            String     @db.VarChar(255)
+    category_name            String     @unique @db.VarChar(255)
     tasks                    Task[]     @relation("TaskCategory")
 }
 

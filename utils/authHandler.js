@@ -12,8 +12,8 @@ module.exports.createJWT = (username) => {
     return jwt.sign({ username }, jwtKey, { expiresIn: 60 * 60 * 3 }); // Expires in 3 hours
 };
 
-// Validate a jwt
-module.exports.validateJWT = async (request, reply) => {
+// Verify token
+module.exports.verifyToken = async (request, reply) => {
     let err = errorMessage.createError();
 
     // Get token from request headers
@@ -31,6 +31,15 @@ module.exports.validateJWT = async (request, reply) => {
         err = errorMessage.createError('Unauthorized', 401, 'Missing token');
         return reply.code(err.https_response.code).send(err);
     }
+};
+
+// Validate a jwt
+module.exports.validateJWT = async (request, reply) => {
+    // Get token from request headers
+    const authHeader = request.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
+
+    this.verifyToken(request, reply);
 
     // Compare token with secret key
     jwt.verify(token, jwtKey, (err, user) => {
