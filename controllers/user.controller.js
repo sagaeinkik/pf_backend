@@ -145,7 +145,7 @@ module.exports.loginUser = async (request, reply) => {
         return reply.send({
             message: 'User logged in successfully!',
             user: {
-                id: user.user_id,
+                user_id: user.user_id,
                 username: user.username,
             },
             token: token,
