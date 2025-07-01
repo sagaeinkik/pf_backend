@@ -45,7 +45,8 @@ module.exports.getAllCatsWithTasksOpts = {
                                 type: 'object',
                                 properties: {
                                     task_id: { type: 'number' },
-                                    task_name: { type: 'string' },
+                                    desc: { type: 'string' },
+                                    completed: { type: 'boolean' },
                                     createdBy: {
                                         type: 'object',
                                         properties: {
