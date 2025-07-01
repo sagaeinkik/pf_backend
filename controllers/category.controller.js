@@ -32,6 +32,33 @@ module.exports.getAllCats = async (request, reply) => {
     }
 };
 
+// All categories with tasks included
+module.exports.getAllCatsWithTasks = async (request, reply) => {
+    error = errs.resetErrors();
+
+    try {
+        const categories = await prisma.category.findMany({
+            include: {
+                tasks: {
+                    include: {
+                        createdBy: true,
+                        completedBy: true,
+                    },
+                },
+            },
+        });
+
+        if (!categories || categories.length === 0) {
+            error = errs.createError('Not Found', 404, 'No categories found.');
+            return reply.code(error.https_response.code).send(error);
+        }
+
+        return reply.send(categories);
+    } catch (error) {
+        return reply.code(500).send(error);
+    }
+};
+
 // Find category by ID
 module.exports.getCatById = async (request, reply) => {
     error = errs.resetErrors();

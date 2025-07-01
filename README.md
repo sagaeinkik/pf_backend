@@ -18,24 +18,25 @@ This is the backend. It's built with Fastify, Prisma and a MySQL database. Bcryp
 
 Please note that you can update and delete tasks created by other accounts in order to collaborate on project. To delete an account, the user must be logged into that account.
 
-|  Method | Endpoint         |  Description          | Auth |
-| ------- | ---------------- | --------------------- | ---- |
-|  GET    |  /               |  Welcome route        | -    |
-|  GET    |  /users          |  Get all users        | -    |
-|  GET    |  /users/:id      |  Get user by ID       | -    |
-|  POST   |  /users/register |  Register new user    | -    |
-|  POST   |  /users/login    |  Log in user          | -    |
-|  DELETE |  /users/:id      |  Deletes user         | Yes  |
-|  GET    |  /categories     |  Gets all categories  | -    |
-|  GET    |  /categories/:id |  Gets category by ID  | -    |
-|  POST   |  /categories     |  Creates new category | Yes  |
-|  PUT    |  /categories/:id |  Updates category     | Yes  |
-|  DELETE |  /categories/:id |  Deletes category     | Yes  |
-|  GET    |  /tasks          |  Gets all tasks       |  -   |
-|  GET    |  /tasks/:id      |  Gets task by ID      |  -   |
-|  POST   |  /tasks          | Creates new task      |  Yes |
-|  PUT    |  /tasks/:id      |  Updates task         |  Yes |
-|  DELETE |  /tasks/:id      |  Deletes task         |  Yes |
+|  Method | Endpoint           |  Description                             | Auth |
+| ------- | ------------------ | ---------------------------------------- | ---- |
+|  GET    |  /                 |  Welcome route                           | -    |
+|  GET    |  /users            |  Get all users                           | -    |
+|  GET    |  /users/:id        |  Get user by ID                          | -    |
+|  POST   |  /users/register   |  Register new user                       | -    |
+|  POST   |  /users/login      |  Log in user                             | -    |
+|  DELETE |  /users/:id        |  Deletes user                            | Yes  |
+|  GET    |  /categories       |  Gets all categories                     | -    |
+|  GET    |  /categories/tasks |  Gets all categories with tasks included | -    |
+|  GET    |  /categories/:id   |  Gets category by ID                     | -    |
+|  POST   |  /categories       |  Creates new category                    | Yes  |
+|  PUT    |  /categories/:id   |  Updates category                        | Yes  |
+|  DELETE |  /categories/:id   |  Deletes category                        | Yes  |
+|  GET    |  /tasks            |  Gets all tasks                          |  -   |
+|  GET    |  /tasks/:id        |  Gets task by ID                         |  -   |
+|  POST   |  /tasks            | Creates new task                         |  Yes |
+|  PUT    |  /tasks/:id        |  Updates task                            |  Yes |
+|  DELETE |  /tasks/:id        |  Deletes task                            |  Yes |
 
 ## Further development
 

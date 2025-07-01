@@ -28,6 +28,49 @@ module.exports.getAllCatsOpts = {
     handler: categoryController.getAllCats,
 };
 
+// Categories with tasks
+module.exports.getAllCatsWithTasksOpts = {
+    schema: {
+        response: {
+            200: {
+                type: 'array',
+                items: {
+                    type: 'object',
+                    properties: {
+                        category_id: { type: 'number' },
+                        category_name: { type: 'string' },
+                        tasks: {
+                            type: 'array',
+                            items: {
+                                type: 'object',
+                                properties: {
+                                    task_id: { type: 'number' },
+                                    task_name: { type: 'string' },
+                                    createdBy: {
+                                        type: 'object',
+                                        properties: {
+                                            user_id: { type: 'number' },
+                                            username: { type: 'string' },
+                                        },
+                                    },
+                                    completedBy: {
+                                        type: 'object',
+                                        properties: {
+                                            user_id: { type: 'number' },
+                                            username: { type: 'string' },
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+    },
+    handler: categoryController.getAllCatsWithTasks,
+};
+
 // Category by ID
 module.exports.getCatByIdOpts = {
     schema: {
